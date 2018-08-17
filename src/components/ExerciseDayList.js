@@ -23,6 +23,18 @@ export const ExerciseDayList = ({days}) => (
   </table>
 )
 
-ExerciseDayList.PropTypes = {
-  days: PropTypes.array
+ExerciseDayList.propTypes = {
+	days: function(props) {
+		if(!Array.isArray(props.days)) {
+			return new Error(
+				"ExerciseDayList should be an array"
+				)
+		} else if(!props.days.length) {
+			return new Error(
+				"ExerciseDayList must have at least one record"
+				)
+		} else {
+			return null
+		}
+	}
 }

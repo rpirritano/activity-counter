@@ -1,7 +1,5 @@
 import { FaWalking } from "react-icons/fa";
 import { FaDumbbell } from "react-icons/fa";
-import { FaHeartBeat } from "react-icons/fa";
-import { FaCalendarAlt } from "react-icons/fa";
 import { PropTypes } from "react";
 
 export const ExerciseDayRow = ({routine, date, weights, cardio}) => (
