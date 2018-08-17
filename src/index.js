@@ -1,13 +1,32 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { ExerciseDayCount } from './components/ExerciseDayCount'
+import './stylesheets/ui.scss'
+import { ExerciseDayList } from './components/ExerciseDayList'
 
 window.React = React
 
 render(
-	<ExerciseDayCount total={6}
-	 									weights={3}
-										cardio={3}
-										goal={6}/>,
-	document.getElementById('react-container')
-)
+	<ExerciseDayList days={
+		[
+			{
+				routine: "P90X",
+				date: new Date("8/1/2018"),
+				weights: true,
+				cardio: false
+			},
+			{
+				routine: "Insanity",
+				date: new Date("8/3/2018"),
+				weights: false,
+				cardio: true
+			},
+			{
+				routine: "Jogging",
+				date: new Date("8/5/2018"),
+				weights: false,
+				cardio: true
+			}
+		]
+	}/>,
+		document.getElementById('react-container')
+	)
