@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { ExerciseDayList } from './ExerciseDayList'
 import { ExerciseDayCount } from './ExerciseDayCount'
 import { AddDayForm } from './AddDayForm'
+import { Menu } from './Menu'
 
 export class App extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export class App extends Component {
   render() {
   return (
     <div className="app">
+    <Menu />
     {(this.props.location.pathname === "/") ?
       <ExerciseDayCount total={this.countDays()}
              weights={this.countDays(
@@ -49,7 +51,7 @@ export class App extends Component {
               )}/> :
      (this.props.location.pathname === "/add-day") ?
       <AddDayForm /> :
-      <ExerciseDayList days={this.state.allExerciseDays}/>				 
+      <ExerciseDayList days={this.state.allExerciseDays}/>
     }
 
     </div>
