@@ -11,24 +11,22 @@ export class App extends Component {
       allExerciseDays: [
       {
         routine: "P90X",
-        date: new Date("8/1/2018"),
+        date: "2018/08/21",
         weights: true,
         cardio: false
-      },
-      {
-        routine: "Insanity",
-        date: new Date("8/3/2018"),
-        weights: false,
-        cardio: true
-      },
-      {
-        routine: "Jogging",
-        date: new Date("8/5/2018"),
-        weights: false,
-        cardio: true
       }
     ]
     }
+    this.addDay = this.addDay.bind(this)
+  }
+
+  addDay(newDay) {
+    this.setState({
+      allExerciseDays: [
+        ...this.state.allExerciseDays,
+        newDay
+      ]
+    })
   }
 
   countDays(filter) {
@@ -50,7 +48,7 @@ export class App extends Component {
                 "cardio"
               )}/> :
      (this.props.location.pathname === "/add-day") ?
-      <AddDayForm /> :
+      <AddDayForm onNewDay={this.addDay} /> : //pass down as a prop
       <ExerciseDayList days={this.state.allExerciseDays}
                         filter={this.props.params.filter}/>
     }

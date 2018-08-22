@@ -5,7 +5,7 @@ import { PropTypes } from "react";
 export const ExerciseDayRow = ({routine, date, weights, cardio}) => (
   <tr>
     <td>
-      {date.getMonth()+1}/{date.getDate()}/{date.getFullYear()}
+      {date}
     </td>
     <td>
       {routine}
@@ -22,7 +22,7 @@ export const ExerciseDayRow = ({routine, date, weights, cardio}) => (
 
 ExerciseDayRow.propTypes = {
 	routine: PropTypes.string.isRequired,
-	date: PropTypes.instanceOf(Date).isRequired,
+	date: PropTypes.string.isRequired,
 	weights: PropTypes.bool,
 	cardio: PropTypes.bool
 }

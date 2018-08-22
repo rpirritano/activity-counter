@@ -1,15 +1,22 @@
-import { PropTypes, Component } from 'react'
+import { PropTypes } from 'react'
 
-export const AddDayForm = ({ routine, date, weights, cardio }) => {
+export const AddDayForm = ({ routine, date, weights, cardio, onNewDay }) => {
 
   let _routine, _date, _weights, _cardio
 
   const submit = (e) => {
     e.preventDefault()
-    console.log('routine', _routine.value)
-    console.log('date', _date.value)
-    console.log('weights', _weights.checked)
-    console.log('cardio', _cardio.checked)
+    onNewDay({
+      routine: _routine.value,
+      date: _date.value,
+      weights: _weights.checked,
+      cardio: _cardio.checked
+    })
+    //reset values
+    _routine.value = ''
+    _date.value = ''
+    _weights.value = false
+    _cardio.value = false
   }
 
   return (
