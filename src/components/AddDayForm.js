@@ -1,4 +1,39 @@
-import { PropTypes } from 'react'
+import { PropTypes, Component } from 'react'
+
+const exerciseRoutines = [
+  "Chest & Back",
+  "Shoulders & Arms",
+  "Legs & Back",
+  "Yoga X",
+  "Ab Ripper X",
+  "Pylometric Cardio Circuit",
+  "Cardio Power & Resistance",
+  "Max Inerval Circuit",
+  "Cardio Abs"
+]
+
+class Autocomplete extends Component {
+  get value() {
+    return this.refs.inputExercise.value
+  }
+
+  set value(inputExercise) {
+    this.refs.inputExercise.value = inputValue
+  }
+
+  render() {
+    return (
+      <div>
+        <input ref="inputExercise" type="text" list="exerciseRoutines" />
+        <datalist id="exerciseRoutines">
+          {this.props.options.map(
+            (opt, i) =>
+            <option key={i}>{opt}</option>)}
+        </datalist>
+      </div>
+    )
+  }
+}
 
 export const AddDayForm = ({ routine, date, weights, cardio, onNewDay }) => {
 
@@ -23,10 +58,7 @@ export const AddDayForm = ({ routine, date, weights, cardio, onNewDay }) => {
 		<form onSubmit={submit} className="add-day-form">
 
 			<label htmlFor="routine">Routine Name</label>
-			<input id="routine"
-				   type="text"
-				   required
-				   defaultValue={routine}
+			<Autocomplete options={exerciseRoutines}
 				   ref={input => _routine = input}/>
 
 			<label htmlFor="date">Date</label>
